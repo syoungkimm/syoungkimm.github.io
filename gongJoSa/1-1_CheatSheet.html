@@ -148,7 +148,7 @@ function render(){
   else if(tab==='num')h=plainTable(runRows(D.num));
   else if(tab==='an'){
     const rows=[['번호','과목','출제 주제','핵심 암기 포인트','기존 노트','분류','보완 내용','반영 위치']].concat(D.an.map(r=>r.slice(0,8)));
-    h=`<p class="lede" style="margin-bottom:8px">A 충분 / B 보완 필요 / C 없음(신규 추가) / D 검토 필요. 노란 줄은 정답이나 근거를 아직 확정하지 못한 문항입니다. 번호를 누르면 출제근거표의 해당 문항으로 이동합니다.</p>`+plainTable(rows,{cls:r=>r[5]==='D'?'hit-d':'',fmt:(i,c)=>i===0?`<a class="qlink" href="sol261014.html#${encodeURIComponent(c)}">${esc(c)}</a>`:i===5?`<b class="k-${esc(c)}">${esc(c)}</b>`:esc(c)});
+    h=`<p class="lede" style="margin-bottom:8px">A 충분 / B 보완 필요 / C 없음(신규 추가) / D 검토 필요. 노란 줄은 정답이나 근거를 아직 확정하지 못한 문항입니다. 번호를 누르면 출제근거표의 해당 문항으로 이동합니다.</p>`+plainTable(rows,{cls:r=>r[5]==='D'?'hit-d':'',fmt:(i,c)=>i===0?`<a class="qlink" href="1-1_261014.html#${encodeURIComponent(c)}">${esc(c)}</a>`:i===5?`<b class="k-${esc(c)}">${esc(c)}</b>`:esc(c)});
   }
   else if(tab==='err')h=plainTable(D.err,{cls:r=>/검토|표기/.test(r[2])?'hit-d':''});
   $('#view').innerHTML=h;
